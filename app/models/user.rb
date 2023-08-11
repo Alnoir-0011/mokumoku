@@ -92,4 +92,12 @@ class User < ApplicationRecord
     follower_relationship.pluck(:user_id).include?(user.id)
   end
 
+  def follow(user)
+    following << user
+  end
+
+  def unfollow(user)
+    following.destory(user)
+  end
+
 end
