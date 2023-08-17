@@ -41,4 +41,5 @@ Rails.application.routes.draw do
       resources :events, only: %i[index]
     end
   end
+  resources :user_profiles, only: %i[show]
 end
