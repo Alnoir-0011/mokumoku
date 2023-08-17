@@ -82,14 +82,14 @@ ActiveRecord::Schema.define(version: 2023_08_11_050021) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "forrow_relationships", force: :cascade do |t|
+  create_table "follow_relationships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["follow_id"], name: "index_forrow_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_forrow_relationships_on_user_id_and_follow_id", unique: true
-    t.index ["user_id"], name: "index_forrow_relationships_on_user_id"
+    t.index ["follow_id"], name: "index_follow_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_follow_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_follow_relationships_on_user_id"
   end
 
   create_table "notification_timings", force: :cascade do |t|
@@ -160,8 +160,8 @@ ActiveRecord::Schema.define(version: 2023_08_11_050021) do
   add_foreign_key "event_attendances", "users"
   add_foreign_key "events", "prefectures"
   add_foreign_key "events", "users"
-  add_foreign_key "forrow_relationships", "users"
-  add_foreign_key "forrow_relationships", "users", column: "follow_id"
+  add_foreign_key "follow_relationships", "users"
+  add_foreign_key "follow_relationships", "users", column: "follow_id"
   add_foreign_key "notifications", "users", column: "receiver_id"
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "user_notification_timings", "notification_timings"
