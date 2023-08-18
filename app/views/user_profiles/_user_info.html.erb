@@ -19,9 +19,9 @@
         <% if current_user != @user %>
           <div class="ms-auto">
             <% if current_user.following?(@user) %>
-              <%= link_to 'フォローを外す', '#', class: 'btn btn-outline-primary' %>
+              <%= link_to 'フォローを外す', user_profile_follow_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
             <% else %>
-              <%= link_to 'フォローする', '#', class: 'btn btn-primary' %>
+              <%= link_to 'フォローする', user_profile_follow_path(@user), method: :post, class: 'btn btn-primary' %>
             <% end %>
           </div>
         <% end %>
