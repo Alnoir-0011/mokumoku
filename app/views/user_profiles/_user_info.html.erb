@@ -1,0 +1,39 @@
+<!-- User info -->
+<div class="row align-items-center">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+    <!-- Bg -->
+    <div class="pt-16 rounded-top-md" style="
+    background: url(<%= image_url('profile-bg.jpg') %>) no-repeat;
+      background-size: cover;
+    "></div>
+    <div class="bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom-md shadow-sm">
+      <div class="d-flex align-items-center mb-3">
+        <div class="me-2 position-relative d-flex justify-content-end align-items-end mt-n5">
+          <%= image_tag @user.decorate.avatar, class: 'avatar-xl rounded-circle border border-4 border-white' %>
+        </div>
+        <div class="lh-1">
+          <h2 class="mb-0">
+            <%= @user.name %>
+          </h2>
+        </div>
+        <% if current_user != @user %>
+          <div class="ms-auto">
+            <% if current_user.following?(@user) %>
+              <%= link_to 'フォローを外す', user_profile_follow_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
+            <% else %>
+              <%= link_to 'フォローする', user_profile_follow_path(@user), method: :post, class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="ms-3 mb-3">
+        <label>hobby</label>
+        <p><%= @user.hobby %>
+      </div>
+      <div class="ms-3 mb-0">
+        <label>profile</label>
+        <p><%= @user.profile %></p>
+      </div>
+    </div>
+  </div>
+</div>
